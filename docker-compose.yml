@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  sveltekit:
+    container_name: goodle
+    build: .
+    restart: always
+    ports:
+      - 5050:5050
+    environment:
+      PORT: 5050
+      ORIGIN: "http://localhost:5050"
+      DB_HOST: mariadb
+      DB_PORT: 3306
+      DB_USER: user
+      DB_PASSWORD: 1234
+      DB_NAME: goodle
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:10.6
+    container_name: dbb_goodle
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: goodle
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 1234
+    volumes:
+      - goodle_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 3307:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_goodle
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+    depends_on:
+      - mariadb
+
+volumes:
+  goodle_data:
+

@@ -1,0 +1,6 @@
+# Use the MariaDB image
+FROM mariadb:10.6
+
+# Copy the initialization SQL script
+COPY init.sql /docker-entrypoint-initdb.d/
+
