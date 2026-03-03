@@ -5,11 +5,14 @@ Principales fonctionnalités :
 - Création d’un événement
 - Vote des participants
 - Décision d’une date
+
 Fonctionnalités additionnelles :
 - Administration
 - Authentification
 
-https://github.com/user-attachments/assets/287f3693-2b79-49b2-9f5d-28f95573a35a
+
+https://github.com/user-attachments/assets/10295fe0-98ad-4b8f-8ad7-5556d19173e0
+
 
 # Auteurs
 Liam BENTZINGER
